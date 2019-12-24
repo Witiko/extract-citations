@@ -363,6 +363,7 @@ $(PREFIX)_prefilter.bib: *.bib
 $(PREFIX)_bibcites.xml: *.aux
 	sed -nr '
 	  /^\\bibcite/s/\\bibcite\{([^}]*)\}\{[0-9]*\}$$/\1/p;
+	  /^\\abx@aux@defaultrefcontext/s/\\abx@aux@defaultrefcontext\{[0-9]*\}\{([^}]*)\}\{[^}]*\}$$/\1/p;
 	  /^\\abx@aux@cite/s/\\abx@aux@cite\{([^}]*)\}$$/\1/p' $^ | \
 	awk '
 	  BEGIN {
